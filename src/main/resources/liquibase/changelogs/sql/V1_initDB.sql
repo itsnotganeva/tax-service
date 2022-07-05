@@ -1,7 +1,7 @@
 create table transactions
 (
     id bigserial PRIMARY KEY,
-    info varchar not null
+    info jsonb not null
 );
 
 

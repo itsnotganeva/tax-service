@@ -18,10 +18,8 @@ public class Consumer {
 
     @KafkaListener(topics = "messages", groupId = "group_id")
     public void consume(TransactionDto transactionDto) {
-        log.info("CONSUMER IS CALLED");
-        System.out.println("Consuming the message: " + transactionDto);
         Transaction transaction = new Transaction();
-        transaction.setInfo(transactionDto.toString());
+        transaction.setTransactionDto(transactionDto);
         transactionService.save(transaction);
     }
 }

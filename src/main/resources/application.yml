@@ -1,0 +1,29 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL82Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.xml
+  datasource:
+    password: '600099'
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5431/tax-service
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+packagesToScan: by.ganevich.entity
+server:
+  port: '8082'
